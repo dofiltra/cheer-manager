@@ -30,27 +30,21 @@ class CheerManager {
     }
     this.$(selector)
       .slice(0, count)
-      .map((i:number, el:any) => this.$(el).remove())
+      .map((i: number, el: any) => this.$(el).remove())
   }
 
-  rmByInnerText(
-    selector: string,
-    innerText?: string,
-    innerCount = Number.MAX_SAFE_INTEGER
-  ) {
+  rmByInnerText(selector: string, innerText?: string, innerCount = Number.MAX_SAFE_INTEGER) {
     if (!innerText || !selector) {
       return
     }
 
     try {
       this.$(selector)
-        .filter((i:number, el: any) =>
-          this.$(el.children[0]).text().includes(innerText!)
-        )
+        .filter((i: number, el: any) => this.$(el.children[0]).text().includes(innerText!))
         .slice(0, innerCount)
-        .map((i:number, el:any) => this.$(el).remove())
+        .map((i: number, el: any) => this.$(el).remove())
     } catch (error: any) {
-      return { error}
+      return { error }
     }
   }
 }
